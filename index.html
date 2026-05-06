@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>はやたん | 身体の不調と痛みを優しく和らげる</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green:      #5a9b2e;
+      --green-mid:  #7ec142;
+      --green-pale: #f3f9ec;
+      --text:       #333;
+      --text-sub:   #666;
+      --border:     #ddd;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      color: var(--text);
+      line-height: 1.85;
+    }
+
+    /* ── ナビ ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background: #fff;
+      border-bottom: 3px solid var(--green-mid);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 100;
+    }
+    .nav-logo { font-size: 1.2rem; font-weight: bold; color: var(--green); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.88rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--green); }
+
+    /* ── 共通 ── */
+    section { padding: 88px 40px; }
+    .inner { max-width: 880px; margin: 0 auto; }
+
+    .section-title {
+      font-size: 1.75rem;
+      color: var(--green);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .section-en {
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: .1em;
+      color: var(--text-sub);
+      margin-bottom: 48px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      padding: 13px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: background .2s;
+    }
+    .btn:hover { background: var(--green-mid); }
+
+    /* ── ヒーロー ── */
+    #hero {
+      padding-top: 140px;
+      background: var(--green-pale);
+      text-align: center;
+    }
+    .hero-photo {
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: #c5e6a0;
+      margin: 0 auto 28px;
+      display: flex; align-items: center; justify-content: center;
+      color: #999; font-size: 0.8rem;
+    }
+    .hero-name { color: var(--text-sub); margin-bottom: 14px; }
+    #hero h1 { font-size: 2rem; line-height: 1.6; margin-bottom: 20px; }
+    .hero-sub {
+      color: var(--text-sub);
+      max-width: 440px;
+      margin: 0 auto 36px;
+      font-size: 0.95rem;
+    }
+
+    /* ── 自己紹介 ── */
+    #about { background: #fff; }
+    .about-wrap { display: flex; gap: 48px; align-items: flex-start; }
+    .about-photo {
+      width: 200px; min-width: 200px; height: 260px;
+      background: #c5e6a0;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #999; font-size: 0.8rem;
+    }
+    .about-body h3 { font-size: 1.3rem; color: var(--green); margin-bottom: 14px; }
+    .about-body p { color: var(--text-sub); margin-bottom: 10px; font-size: 0.95rem; }
+
+    /* ── サービス ── */
+    #services { background: var(--green-pale); }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 8px;
+      border-top: 4px solid var(--green-mid);
+      padding: 28px;
+    }
+    .service-card h3 { font-size: 1rem; color: var(--green); margin-bottom: 10px; }
+    .service-card p { color: var(--text-sub); font-size: 0.92rem; }
+
+    /* ── 料金 ── */
+    #pricing { background: #fff; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .pricing-card { border: 2px solid var(--green-mid); border-radius: 8px; overflow: hidden; }
+    .pricing-head { background: var(--green); color: #fff; padding: 18px 22px; }
+    .pricing-head h3 { font-size: 1rem; margin-bottom: 2px; }
+    .pricing-head p { font-size: 0.8rem; opacity: .85; }
+    .pricing-body { padding: 20px 22px; }
+    .pricing-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+    .pricing-row:last-child { border-bottom: none; }
+    .pricing-note {
+      text-align: center;
+      margin-top: 20px;
+      color: var(--text-sub);
+      font-size: 0.82rem;
+    }
+
+    /* ── Kindle ── */
+    #kindle { background: var(--green-pale); }
+    .kindle-card {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      background: #fff;
+      border-radius: 8px;
+      padding: 36px;
+    }
+    .kindle-cover {
+      width: 130px; min-width: 130px; height: 185px;
+      background: #c5e6a0;
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      color: #999; font-size: 0.8rem;
+    }
+    .kindle-body h3 { font-size: 1.1rem; color: var(--green); margin-bottom: 12px; }
+    .kindle-body p { color: var(--text-sub); font-size: 0.92rem; margin-bottom: 20px; }
+
+    /* ── SNS ── */
+    #sns { background: #fff; text-align: center; }
+    .sns-list { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .sns-btn {
+      display: inline-block;
+      padding: 11px 26px;
+      border: 2px solid var(--green-mid);
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.88rem;
+      transition: all .2s;
+    }
+    .sns-btn:hover { background: var(--green); border-color: var(--green); color: #fff; }
+
+    /* ── お問い合わせ ── */
+    #contact { background: var(--green-pale); text-align: center; }
+    .contact-sub { color: var(--text-sub); margin-bottom: 32px; font-size: 0.95rem; }
+    .contact-options { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .contact-box {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 44px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color .2s;
+    }
+    .contact-box:hover { border-color: var(--green); }
+    .contact-label { font-size: 0.75rem; color: var(--text-sub); margin-bottom: 6px; }
+    .contact-value { font-size: 0.95rem; color: var(--green); font-weight: bold; }
+
+    /* ── フッター ── */
+    footer {
+      background: #333;
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 22px;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ナビゲーション -->
+<nav>
+  <div class="nav-logo">はやたん</div>
+  <ul class="nav-links">
+    <li><a href="#about">自己紹介</a></li>
+    <li><a href="#services">サービス</a></li>
+    <li><a href="#pricing">料金</a></li>
+    <li><a href="#kindle">Kindle</a></li>
+    <li><a href="#sns">SNS</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<!-- ヒーロー -->
+<section id="hero">
+  <div class="inner">
+    <div class="hero-photo">写真</div>
+    <p class="hero-name">はやたん</p>
+    <h1>身体の不調と痛みを<br>優しく和らげる</h1>
+    <p class="hero-sub">出張神経ケア・健康経営サポート・講演会活動を通じて、あなたの健康と生活の質を向上させます。</p>
+    <a href="#contact" class="btn">お問い合わせはこちら</a>
+  </div>
+</section>
+
+<!-- 自己紹介 -->
+<section id="about">
+  <div class="inner">
+    <h2 class="section-title">自己紹介</h2>
+    <p class="section-en">ABOUT</p>
+    <div class="about-wrap">
+      <div class="about-photo">写真</div>
+      <div class="about-body">
+        <h3>はやたん</h3>
+        <p>整体師・健康経営アドバイザー・Kindle作家として、身体の不調や痛みに悩む方々に向けて幅広く活動しています。</p>
+        <p>出張での神経ケアをはじめ、企業の健康経営サポート、健康・痛みをテーマにした情報発信・講演会など、「健康」をキーワードにさまざまな形で関わっています。</p>
+        <p style="color:#aaa;">※ 自己紹介文は後ほど差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- サービス一覧 -->
+<section id="services">
+  <div class="inner">
+    <h2 class="section-title">サービス一覧</h2>
+    <p class="section-en">SERVICES</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>出張神経ケア（整体）</h3>
+        <p>お客様のご自宅へ伺い、神経ケアを提供します。移動の手間なく、リラックスした環境で施術を受けていただけます。</p>
+      </div>
+      <div class="service-card">
+        <h3>健康経営サポート</h3>
+        <p>企業・法人様の健康経営に向けてサポートします。従業員の健康維持・増進に向けた取り組みをご提案します。</p>
+      </div>
+      <div class="service-card">
+        <h3>不調・痛み改善サポート</h3>
+        <p>ococナラにて個別の伴走サポートを提供中。身体の不調や痛みの改善に向けて、一人ひとりに寄り添いながらサポートします。</p>
+      </div>
+      <div class="service-card">
+        <h3>講演会</h3>
+        <p>健康・痛みに関する講演会を実施しています。企業・団体へのご訪問も承ります。テーマはご相談ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<section id="pricing">
+  <div class="inner">
+    <h2 class="section-title">料金</h2>
+    <p class="section-en">PRICING</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-head">
+          <h3>健康経営サポート</h3>
+          <p>法人・企業向け</p>
+        </div>
+        <div class="pricing-body">
+          <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
+          <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
+        </div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-head">
+          <h3>講演会</h3>
+          <p>企業・団体向け</p>
+        </div>
+        <div class="pricing-body">
+          <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
+          <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="pricing-note">※ 出張神経ケア・不調サポートの料金はお問い合わせください。</p>
+  </div>
+</section>
+
+<!-- Kindle本 -->
+<section id="kindle">
+  <div class="inner">
+    <h2 class="section-title">Kindle本</h2>
+    <p class="section-en">BOOKS</p>
+    <div class="kindle-card">
+      <div class="kindle-cover">表紙</div>
+      <div class="kindle-body">
+        <h3>書籍タイトル（仮）</h3>
+        <p>健康・痛みに関するノウハウをまとめた一冊です。身体の不調に悩む方に向けて、日常でできるセルフケアの方法をわかりやすく解説しています。</p>
+        <p style="color:#aaa; font-size:0.85rem; margin-bottom:20px;">※ タイトル・説明文・リンクは後ほど差し替えます</p>
+        <a href="#" class="btn">Amazonで見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SNS -->
+<section id="sns">
+  <div class="inner">
+    <h2 class="section-title">SNS</h2>
+    <p class="section-en">FOLLOW ME</p>
+    <div class="sns-list">
+      <a href="https://x.com/hayancarerm" class="sns-btn" target="_blank" rel="noopener">X（旧Twitter）</a>
+      <a href="https://www.instagram.com/haya_kenko" class="sns-btn" target="_blank" rel="noopener">Instagram｜健康</a>
+      <a href="https://www.instagram.com/haya_pain" class="sns-btn" target="_blank" rel="noopener">Instagram｜痛み</a>
+      <a href="https://youtube.com/@hayatanyasa8" class="sns-btn" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.tiktok.com/@hayatan_kenko" class="sns-btn" target="_blank" rel="noopener">TikTok｜健康</a>
+      <a href="https://www.tiktok.com/@hayatan_pain" class="sns-btn" target="_blank" rel="noopener">TikTok｜痛み</a>
+    </div>
+  </div>
+</section>
+
+<!-- お問い合わせ -->
+<section id="contact">
+  <div class="inner">
+    <h2 class="section-title">お問い合わせ</h2>
+    <p class="section-en">CONTACT</p>
+    <p class="contact-sub">サービスに関するご質問・ご相談は、お気軽にご連絡ください。</p>
+    <div class="contact-options">
+      <a href="mailto:xxxx@xxxx.xx" class="contact-box">
+        <div class="contact-label">メール</div>
+        <div class="contact-value">xxxx@xxxx.xx（仮）</div>
+      </a>
+      <a href="#" class="contact-box">
+        <div class="contact-label">お問い合わせフォーム</div>
+        <div class="contact-value">Googleフォームへ →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer>
+  <p>© 2026 はやたん All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
