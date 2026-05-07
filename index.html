@@ -72,13 +72,40 @@
     }
     .btn:hover { background: var(--green-mid); }
 
-    /* ── ヒーロー ── */
-    #hero {
-      padding-top: 140px;
-      background: var(--green-pale);
-      text-align: center;
+    /* ── パターン切り替えスイッチャー（確認用） ── */
+    #hero-switcher {
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: #1e1e1e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 8px 20px;
+      z-index: 99;
+      font-size: 0.78rem;
     }
-    .hero-photo {
+    #hero-switcher span { color: #888; }
+    .sw-btn {
+      background: transparent;
+      border: 1px solid #555;
+      color: #bbb;
+      padding: 4px 18px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      transition: all .2s;
+      font-family: inherit;
+    }
+    .sw-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
+    .sw-btn:hover { border-color: var(--green-mid); color: #fff; }
+
+    /* ── ヒーロー 共通 ── */
+    .hero-section { padding-top: 160px; padding-bottom: 88px; }
+
+    /* パターン A：中央揃え */
+    #hero-a { background: var(--green-pale); text-align: center; }
+    .hero-a-photo {
       width: 150px; height: 150px;
       border-radius: 50%;
       background: #c5e6a0;
@@ -87,13 +114,65 @@
       color: #999; font-size: 0.8rem;
     }
     .hero-name { color: var(--text-sub); margin-bottom: 14px; }
-    #hero h1 { font-size: 2rem; line-height: 1.6; margin-bottom: 20px; }
+    .hero-h1 { font-size: 2rem; line-height: 1.6; margin-bottom: 20px; }
     .hero-sub {
       color: var(--text-sub);
       max-width: 440px;
       margin: 0 auto 36px;
       font-size: 0.95rem;
     }
+
+    /* パターン B：左テキスト・右写真 */
+    #hero-b { background: #fff; }
+    .hero-b-wrap {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    .hero-b-text { flex: 1; }
+    .hero-b-text .hero-name { text-align: left; }
+    .hero-b-text .hero-h1 { text-align: left; font-size: 2.1rem; }
+    .hero-b-text .hero-sub { text-align: left; margin-left: 0; max-width: 100%; }
+    .hero-b-photo {
+      width: 300px; min-width: 300px; height: 380px;
+      background: #c5e6a0;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #999; font-size: 0.85rem;
+    }
+
+    /* パターン C：写真背景・テキストオーバーレイ */
+    #hero-c {
+      background: linear-gradient(135deg, #1e5c08 0%, #3d8020 45%, #6db335 100%);
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-c-photo {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      border: 3px solid rgba(255,255,255,.5);
+      margin: 0 auto 28px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.7); font-size: 0.8rem;
+    }
+    #hero-c .hero-name { color: rgba(255,255,255,.75); }
+    #hero-c .hero-h1 { color: #fff; font-size: 2.2rem; }
+    #hero-c .hero-sub { color: rgba(255,255,255,.8); }
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 13px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all .2s;
+    }
+    .btn-outline:hover { background: #fff; color: var(--green); }
 
     /* ── 自己紹介 ── */
     #about { background: #fff; }
@@ -224,14 +303,48 @@
   </ul>
 </nav>
 
-<!-- ヒーロー -->
-<section id="hero">
+<!-- パターン切り替えスイッチャー（確認用） -->
+<div id="hero-switcher">
+  <span>ヒーローのパターン：</span>
+  <button class="sw-btn active" id="btn-a" onclick="switchHero('a')">A　中央揃え</button>
+  <button class="sw-btn" id="btn-b" onclick="switchHero('b')">B　左テキスト＋右写真</button>
+  <button class="sw-btn" id="btn-c" onclick="switchHero('c')">C　写真背景</button>
+</div>
+
+<!-- ヒーロー パターン A：中央揃え -->
+<section id="hero-a" class="hero-section">
   <div class="inner">
-    <div class="hero-photo">写真</div>
+    <div class="hero-a-photo">写真</div>
     <p class="hero-name">はやたん</p>
-    <h1>身体の不調と痛みを<br>優しく和らげる</h1>
+    <h1 class="hero-h1">身体の不調と痛みを<br>優しく和らげる</h1>
     <p class="hero-sub">出張神経ケア・健康経営サポート・講演会活動を通じて、あなたの健康と生活の質を向上させます。</p>
     <a href="#contact" class="btn">お問い合わせはこちら</a>
+  </div>
+</section>
+
+<!-- ヒーロー パターン B：左テキスト＋右写真 -->
+<section id="hero-b" class="hero-section" style="display:none;">
+  <div class="inner">
+    <div class="hero-b-wrap">
+      <div class="hero-b-text">
+        <p class="hero-name">はやたん</p>
+        <h1 class="hero-h1">身体の不調と痛みを<br>優しく和らげる</h1>
+        <p class="hero-sub">出張神経ケア・健康経営サポート・講演会活動を通じて、あなたの健康と生活の質を向上させます。</p>
+        <a href="#contact" class="btn">お問い合わせはこちら</a>
+      </div>
+      <div class="hero-b-photo">写真</div>
+    </div>
+  </div>
+</section>
+
+<!-- ヒーロー パターン C：写真背景 -->
+<section id="hero-c" class="hero-section" style="display:none;">
+  <div class="inner">
+    <div class="hero-c-photo">写真</div>
+    <p class="hero-name">はやたん</p>
+    <h1 class="hero-h1">身体の不調と痛みを<br>優しく和らげる</h1>
+    <p class="hero-sub">出張神経ケア・健康経営サポート・講演会活動を通じて、あなたの健康と生活の質を向上させます。</p>
+    <a href="#contact" class="btn-outline">お問い合わせはこちら</a>
   </div>
 </section>
 
@@ -366,5 +479,16 @@
   <p>© 2026 はやたん All Rights Reserved.</p>
 </footer>
 
+<script>
+  function switchHero(pattern) {
+    ['a', 'b', 'c'].forEach(function(p) {
+      document.getElementById('hero-' + p).style.display = p === pattern ? 'block' : 'none';
+      document.getElementById('btn-' + p).classList.toggle('active', p === pattern);
+    });
+    if (pattern === 'c') {
+      document.getElementById('hero-c').style.display = 'flex';
+    }
+  }
+</script>
 </body>
 </html>
