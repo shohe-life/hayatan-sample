@@ -72,96 +72,6 @@
     }
     .btn:hover { background: var(--green-mid); }
 
-    /* ── パターン切り替えスイッチャー（確認用） ── */
-    #hero-switcher {
-      position: fixed;
-      top: 60px; left: 0; right: 0;
-      background: #1e1e1e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 8px 20px;
-      z-index: 99;
-      font-size: 0.78rem;
-    }
-    #hero-switcher span { color: #888; }
-    .sw-btn {
-      background: transparent;
-      border: 1px solid #555;
-      color: #bbb;
-      padding: 4px 18px;
-      border-radius: 3px;
-      cursor: pointer;
-      font-size: 0.78rem;
-      transition: all .2s;
-      font-family: inherit;
-    }
-    .sw-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
-    .sw-btn:hover { border-color: var(--green-mid); color: #fff; }
-
-    /* ── ヒーロー 共通 ── */
-    .hero-section { padding-top: 160px; padding-bottom: 88px; }
-
-    /* パターン A：中央揃え */
-    #hero-a { background: var(--green-pale); text-align: center; }
-    .hero-a-photo {
-      width: 150px; height: 150px;
-      border-radius: 50%;
-      background: #c5e6a0;
-      margin: 0 auto 28px;
-      display: flex; align-items: center; justify-content: center;
-      color: #999; font-size: 0.8rem;
-    }
-    .hero-name { color: var(--text-sub); margin-bottom: 14px; }
-    .hero-h1 { font-size: 2rem; line-height: 1.6; margin-bottom: 20px; }
-    .hero-sub {
-      color: var(--text-sub);
-      max-width: 440px;
-      margin: 0 auto 36px;
-      font-size: 0.95rem;
-    }
-
-    /* パターン B：左テキスト・右写真 */
-    #hero-b { background: #fff; }
-    .hero-b-wrap {
-      display: flex;
-      align-items: center;
-      gap: 60px;
-    }
-    .hero-b-text { flex: 1; }
-    .hero-b-text .hero-name { text-align: left; }
-    .hero-b-text .hero-h1 { text-align: left; font-size: 2.1rem; }
-    .hero-b-text .hero-sub { text-align: left; margin-left: 0; max-width: 100%; }
-    .hero-b-photo {
-      width: 300px; min-width: 300px; height: 380px;
-      background: #c5e6a0;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: #999; font-size: 0.85rem;
-    }
-
-    /* パターン C：写真背景・テキストオーバーレイ */
-    #hero-c {
-      background: linear-gradient(135deg, #1e5c08 0%, #3d8020 45%, #6db335 100%);
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .hero-c-photo {
-      width: 160px; height: 160px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.2);
-      border: 3px solid rgba(255,255,255,.5);
-      margin: 0 auto 28px;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.7); font-size: 0.8rem;
-    }
-    #hero-c .hero-name { color: rgba(255,255,255,.75); }
-    #hero-c .hero-h1 { color: #fff; font-size: 2.2rem; }
-    #hero-c .hero-sub { color: rgba(255,255,255,.8); }
     .btn-outline {
       display: inline-block;
       border: 2px solid #fff;
@@ -174,54 +84,81 @@
     }
     .btn-outline:hover { background: #fff; color: var(--green); }
 
+    /* ── ヒーロー ── */
+    #hero {
+      background: url('images/TOP.PNG') center center / cover no-repeat;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 60px;
+      position: relative;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+    #hero .inner { position: relative; z-index: 1; }
+    .hero-name { color: rgba(255,255,255,.8); margin-bottom: 14px; }
+    .hero-h1 { font-size: 2.2rem; line-height: 1.6; margin-bottom: 20px; color: #fff; }
+    .hero-sub {
+      color: rgba(255,255,255,.85);
+      max-width: 440px;
+      margin: 0 auto 36px;
+      font-size: 0.95rem;
+    }
+
     /* ── 自己紹介 ── */
     #about { background: #fff; }
-    .about-wrap { display: flex; gap: 48px; align-items: flex-start; }
+    .about-center { text-align: center; }
     .about-photo {
-      width: 200px; min-width: 200px; height: 260px;
-      background: #c5e6a0;
+      width: 220px;
+      height: 280px;
       border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: #999; font-size: 0.8rem;
+      margin: 0 auto 32px;
+      overflow: hidden;
     }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .about-body h3 { font-size: 1.3rem; color: var(--green); margin-bottom: 14px; }
     .about-body p { color: var(--text-sub); margin-bottom: 10px; font-size: 0.95rem; }
 
     /* ── サービス ── */
-    #services { background: var(--green-pale); }
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    .service-card {
+    #services { background: var(--green-pale); padding: 88px 0; }
+    .services-header { padding: 0 40px; }
+    .service-item {
       background: #fff;
-      border-radius: 8px;
-      border-top: 4px solid var(--green-mid);
-      padding: 28px;
+      padding: 48px 80px;
+      border-top: 1px solid var(--border);
     }
-    .service-card h3 { font-size: 1rem; color: var(--green); margin-bottom: 10px; }
-    .service-card p { color: var(--text-sub); font-size: 0.92rem; }
+    .service-item:first-of-type { border-top: 4px solid var(--green-mid); }
+    .service-item h3 { font-size: 1.3rem; color: var(--green); margin-bottom: 12px; }
+    .service-item p { color: var(--text-sub); font-size: 0.95rem; max-width: 760px; }
 
     /* ── 料金 ── */
-    #pricing { background: #fff; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-    .pricing-card { border: 2px solid var(--green-mid); border-radius: 8px; overflow: hidden; }
-    .pricing-head { background: var(--green); color: #fff; padding: 18px 22px; }
-    .pricing-head h3 { font-size: 1rem; margin-bottom: 2px; }
-    .pricing-head p { font-size: 0.8rem; opacity: .85; }
-    .pricing-body { padding: 20px 22px; }
+    #pricing { background: #fff; padding: 88px 0; }
+    .pricing-header { padding: 0 40px; }
+    .pricing-item { border-top: 1px solid var(--border); }
+    .pricing-item:first-of-type { border-top: 4px solid var(--green-mid); }
+    .pricing-item-head { background: var(--green); color: #fff; padding: 24px 80px; }
+    .pricing-item-head h3 { font-size: 1.1rem; margin-bottom: 2px; }
+    .pricing-item-head p { font-size: 0.82rem; opacity: .85; }
+    .pricing-item-body { padding: 20px 80px; }
     .pricing-row {
       display: flex;
       justify-content: space-between;
       padding: 9px 0;
       border-bottom: 1px solid var(--border);
       font-size: 0.92rem;
+      max-width: 500px;
     }
     .pricing-row:last-child { border-bottom: none; }
     .pricing-note {
       text-align: center;
-      margin-top: 20px;
+      margin-top: 32px;
+      padding: 0 40px;
       color: var(--text-sub);
       font-size: 0.82rem;
     }
@@ -303,44 +240,9 @@
   </ul>
 </nav>
 
-<!-- パターン切り替えスイッチャー（確認用） -->
-<div id="hero-switcher">
-  <span>ヒーローのパターン：</span>
-  <button class="sw-btn active" id="btn-a" onclick="switchHero('a')">A　中央揃え</button>
-  <button class="sw-btn" id="btn-b" onclick="switchHero('b')">B　左テキスト＋右写真</button>
-  <button class="sw-btn" id="btn-c" onclick="switchHero('c')">C　写真背景</button>
-</div>
-
-<!-- ヒーロー パターン A：中央揃え -->
-<section id="hero-a" class="hero-section">
+<!-- ヒーロー -->
+<section id="hero">
   <div class="inner">
-    <div class="hero-a-photo">写真</div>
-    <p class="hero-name">はやたん</p>
-    <h1 class="hero-h1">身体の不調と痛みを<br>優しく和らげる</h1>
-    <p class="hero-sub">出張神経ケア・健康経営サポート・講演会活動を通じて、あなたの健康と生活の質を向上させます。</p>
-    <a href="#contact" class="btn">お問い合わせはこちら</a>
-  </div>
-</section>
-
-<!-- ヒーロー パターン B：左テキスト＋右写真 -->
-<section id="hero-b" class="hero-section" style="display:none;">
-  <div class="inner">
-    <div class="hero-b-wrap">
-      <div class="hero-b-text">
-        <p class="hero-name">はやたん</p>
-        <h1 class="hero-h1">身体の不調と痛みを<br>優しく和らげる</h1>
-        <p class="hero-sub">出張神経ケア・健康経営サポート・講演会活動を通じて、あなたの健康と生活の質を向上させます。</p>
-        <a href="#contact" class="btn">お問い合わせはこちら</a>
-      </div>
-      <div class="hero-b-photo">写真</div>
-    </div>
-  </div>
-</section>
-
-<!-- ヒーロー パターン C：写真背景 -->
-<section id="hero-c" class="hero-section" style="display:none;">
-  <div class="inner">
-    <div class="hero-c-photo">写真</div>
     <p class="hero-name">はやたん</p>
     <h1 class="hero-h1">身体の不調と痛みを<br>優しく和らげる</h1>
     <p class="hero-sub">出張神経ケア・健康経営サポート・講演会活動を通じて、あなたの健康と生活の質を向上させます。</p>
@@ -353,8 +255,10 @@
   <div class="inner">
     <h2 class="section-title">自己紹介</h2>
     <p class="section-en">ABOUT</p>
-    <div class="about-wrap">
-      <div class="about-photo">写真</div>
+    <div class="about-center">
+      <div class="about-photo">
+        <img src="images/profile.JPG" alt="はやたん">
+      </div>
       <div class="about-body">
         <h3>はやたん</h3>
         <p>整体師・健康経営アドバイザー・Kindle作家として、身体の不調や痛みに悩む方々に向けて幅広く活動しています。</p>
@@ -367,59 +271,55 @@
 
 <!-- サービス一覧 -->
 <section id="services">
-  <div class="inner">
+  <div class="services-header">
     <h2 class="section-title">サービス一覧</h2>
     <p class="section-en">SERVICES</p>
-    <div class="service-grid">
-      <div class="service-card">
-        <h3>出張神経ケア（整体）</h3>
-        <p>お客様のご自宅へ伺い、神経ケアを提供します。移動の手間なく、リラックスした環境で施術を受けていただけます。</p>
-      </div>
-      <div class="service-card">
-        <h3>健康経営サポート</h3>
-        <p>企業・法人様の健康経営に向けてサポートします。従業員の健康維持・増進に向けた取り組みをご提案します。</p>
-      </div>
-      <div class="service-card">
-        <h3>不調・痛み改善サポート</h3>
-        <p>ococナラにて個別の伴走サポートを提供中。身体の不調や痛みの改善に向けて、一人ひとりに寄り添いながらサポートします。</p>
-      </div>
-      <div class="service-card">
-        <h3>講演会</h3>
-        <p>健康・痛みに関する講演会を実施しています。企業・団体へのご訪問も承ります。テーマはご相談ください。</p>
-      </div>
-    </div>
+  </div>
+  <div class="service-item">
+    <h3>出張神経ケア（整体）</h3>
+    <p>お客様のご自宅へ伺い、神経ケアを提供します。移動の手間なく、リラックスした環境で施術を受けていただけます。</p>
+  </div>
+  <div class="service-item">
+    <h3>健康経営サポート</h3>
+    <p>企業・法人様の健康経営に向けてサポートします。従業員の健康維持・増進に向けた取り組みをご提案します。</p>
+  </div>
+  <div class="service-item">
+    <h3>不調・痛み改善サポート</h3>
+    <p>ococナラにて個別の伴走サポートを提供中。身体の不調や痛みの改善に向けて、一人ひとりに寄り添いながらサポートします。</p>
+  </div>
+  <div class="service-item">
+    <h3>講演会</h3>
+    <p>健康・痛みに関する講演会を実施しています。企業・団体へのご訪問も承ります。テーマはご相談ください。</p>
   </div>
 </section>
 
 <!-- 料金 -->
 <section id="pricing">
-  <div class="inner">
+  <div class="pricing-header">
     <h2 class="section-title">料金</h2>
     <p class="section-en">PRICING</p>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-head">
-          <h3>健康経営サポート</h3>
-          <p>法人・企業向け</p>
-        </div>
-        <div class="pricing-body">
-          <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
-          <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
-        </div>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-head">
-          <h3>講演会</h3>
-          <p>企業・団体向け</p>
-        </div>
-        <div class="pricing-body">
-          <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
-          <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
-        </div>
-      </div>
-    </div>
-    <p class="pricing-note">※ 出張神経ケア・不調サポートの料金はお問い合わせください。</p>
   </div>
+  <div class="pricing-item">
+    <div class="pricing-item-head">
+      <h3>健康経営サポート</h3>
+      <p>法人・企業向け</p>
+    </div>
+    <div class="pricing-item-body">
+      <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
+      <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
+    </div>
+  </div>
+  <div class="pricing-item">
+    <div class="pricing-item-head">
+      <h3>講演会</h3>
+      <p>企業・団体向け</p>
+    </div>
+    <div class="pricing-item-body">
+      <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
+      <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
+    </div>
+  </div>
+  <p class="pricing-note">※ 出張神経ケア・不調サポートの料金はお問い合わせください。</p>
 </section>
 
 <!-- Kindle本 -->
@@ -479,16 +379,5 @@
   <p>© 2026 はやたん All Rights Reserved.</p>
 </footer>
 
-<script>
-  function switchHero(pattern) {
-    ['a', 'b', 'c'].forEach(function(p) {
-      document.getElementById('hero-' + p).style.display = p === pattern ? 'block' : 'none';
-      document.getElementById('btn-' + p).classList.toggle('active', p === pattern);
-    });
-    if (pattern === 'c') {
-      document.getElementById('hero-c').style.display = 'flex';
-    }
-  }
-</script>
 </body>
 </html>
