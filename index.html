@@ -104,6 +104,9 @@
     #hero .inner { position: relative; z-index: 1; }
     .hero-name { color: rgba(255,255,255,.8); margin-bottom: 14px; }
     .hero-h1 { font-size: 2.2rem; line-height: 1.6; margin-bottom: 20px; color: #fff; }
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 1.7rem; }
+    }
     .hero-sub {
       color: rgba(255,255,255,.85);
       max-width: 440px;
@@ -174,12 +177,13 @@
       padding: 36px;
     }
     .kindle-cover {
-      width: 130px; min-width: 130px; height: 185px;
-      background: #c5e6a0;
+      width: 130px; min-width: 130px;
       border-radius: 4px;
-      display: flex; align-items: center; justify-content: center;
-      color: #999; font-size: 0.8rem;
+      text-decoration: none;
+      overflow: hidden;
+      align-self: flex-start;
     }
+    .kindle-cover img { width: 100%; height: auto; display: block; border-radius: 4px; }
     .kindle-body h3 { font-size: 1.1rem; color: var(--green); margin-bottom: 12px; }
     .kindle-body p { color: var(--text-sub); font-size: 0.92rem; margin-bottom: 20px; }
 
@@ -328,12 +332,11 @@
     <h2 class="section-title">Kindle本</h2>
     <p class="section-en">BOOKS</p>
     <div class="kindle-card">
-      <div class="kindle-cover">表紙</div>
+      <a href="https://amzn.to/4orpar1" class="kindle-cover" target="_blank" rel="noopener"><img src="images/kindle01.jpg" alt="腰痛の新常識"></a>
       <div class="kindle-body">
-        <h3>書籍タイトル（仮）</h3>
-        <p>健康・痛みに関するノウハウをまとめた一冊です。身体の不調に悩む方に向けて、日常でできるセルフケアの方法をわかりやすく解説しています。</p>
-        <p style="color:#aaa; font-size:0.85rem; margin-bottom:20px;">※ タイトル・説明文・リンクは後ほど差し替えます</p>
-        <a href="#" class="btn">Amazonで見る</a>
+        <h3>腰痛の新常識</h3>
+        <p>【慢性腰痛】99%が知らない 腰痛の新常識: 長引く腰痛を治したければ、いますぐ、腰痛の常識を変えよ！ 理学療法士が明かす10個の迷信と世界基準の腰痛改善法 腰痛の常識を変える腰痛改善シリーズ</p>
+        <a href="https://amzn.to/3Isrz4i" class="btn" target="_blank" rel="noopener">Amazonで見る</a>
       </div>
     </div>
   </div>
@@ -362,9 +365,9 @@
     <p class="section-en">CONTACT</p>
     <p class="contact-sub">サービスに関するご質問・ご相談は、お気軽にご連絡ください。</p>
     <div class="contact-options">
-      <a href="mailto:xxxx@xxxx.xx" class="contact-box">
+      <a href="mailto:hayatan86h@gmail.com" class="contact-box">
         <div class="contact-label">メール</div>
-        <div class="contact-value">xxxx@xxxx.xx（仮）</div>
+        <div class="contact-value">hayatan86h@gmail.com</div>
       </a>
       <a href="https://utage-system.com/p/dyk3rrCuwrLj" class="contact-box" target="_blank" rel="noopener">
         <div class="contact-label">お問い合わせフォーム</div>
