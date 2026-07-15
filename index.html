@@ -37,21 +37,18 @@
       padding: 0 40px;
       z-index: 100;
     }
-    .nav-logo { font-size: 1.2rem; font-weight: bold; color: var(--green); }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.88rem; transition: color .2s; }
-    .nav-links a:hover { color: var(--green); }
-    .nav-toggle-checkbox { display: none; }
-    .nav-toggle-label {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 26px;
-      height: 20px;
-      cursor: pointer;
+    .nav-logo { font-size: 1.2rem; font-weight: bold; color: var(--green); flex-shrink: 0; }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
-    .nav-toggle-label span { display: block; height: 2px; background: var(--text); border-radius: 2px; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links li { flex-shrink: 0; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.88rem; transition: color .2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--green); }
 
     /* ── 共通 ── */
     section { padding: 88px 40px; }
@@ -269,28 +266,8 @@
     }
 
     @media (max-width: 700px) {
-      nav { padding: 0 20px; }
-      .nav-toggle-label { display: flex; }
-      .nav-links {
-        position: fixed;
-        top: 60px; left: 0; right: 0;
-        flex-direction: column;
-        gap: 0;
-        background: #fff;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height .25s ease;
-      }
-      .nav-links a {
-        display: block;
-        padding: 16px 24px;
-        border-top: 1px solid var(--border);
-        font-size: 0.95rem;
-      }
-      .nav-toggle-checkbox:checked ~ .nav-links {
-        max-height: 400px;
-        border-bottom: 1px solid var(--border);
-      }
+      nav { padding: 0 20px; gap: 16px; }
+      .nav-links { gap: 20px; mask-image: linear-gradient(to right, #000 88%, transparent); }
     }
 
     @media (max-width: 480px) {
@@ -308,10 +285,6 @@
 <!-- ナビゲーション -->
 <nav>
   <div class="nav-logo">はやたん</div>
-  <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
-  <label for="nav-toggle" class="nav-toggle-label" aria-label="メニューを開く">
-    <span></span><span></span><span></span>
-  </label>
   <ul class="nav-links">
     <li><a href="#about">自己紹介</a></li>
     <li><a href="#services">サービス</a></li>
