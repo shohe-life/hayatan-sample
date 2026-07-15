@@ -104,9 +104,6 @@
     #hero .inner { position: relative; z-index: 1; }
     .hero-name { color: rgba(255,255,255,.8); margin-bottom: 14px; }
     .hero-h1 { font-size: 2.2rem; line-height: 1.6; margin-bottom: 20px; color: #fff; }
-    @media (max-width: 480px) {
-      .hero-h1 { font-size: 1.7rem; }
-    }
     .hero-sub {
       color: rgba(255,255,255,.85);
       max-width: 440px;
@@ -135,10 +132,15 @@
       background: #fff;
       padding: 48px 80px;
       border-top: 1px solid var(--border);
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
     }
     .service-item:first-of-type { border-top: 4px solid var(--green-mid); }
-    .service-item h3 { font-size: 1.3rem; color: var(--green); margin-bottom: 12px; }
-    .service-item p { color: var(--text-sub); font-size: 0.95rem; max-width: 760px; }
+    .service-icon { width: 60px; height: 60px; min-width: 60px; object-fit: contain; margin-top: 4px; }
+    .service-body h3 { font-size: 1.3rem; color: var(--green); margin-bottom: 12px; }
+    .service-body p { color: var(--text-sub); font-size: 0.95rem; max-width: 760px; margin-bottom: 20px; }
+    .service-body .btn { padding: 10px 28px; font-size: 0.88rem; }
 
     /* ── 料金 ── */
     #pricing { background: #fff; padding: 88px 0; }
@@ -148,16 +150,43 @@
     .pricing-item-head { background: var(--green); color: #fff; padding: 24px 80px; }
     .pricing-item-head h3 { font-size: 1.1rem; margin-bottom: 2px; }
     .pricing-item-head p { font-size: 0.82rem; opacity: .85; }
-    .pricing-item-body { padding: 20px 80px; }
+    .pricing-item-body { padding: 28px 80px; }
+    .pricing-desc { color: var(--text-sub); font-size: 0.92rem; margin-bottom: 24px; max-width: 700px; }
+    .pricing-sub-heading {
+      font-weight: bold;
+      color: var(--green);
+      font-size: 0.92rem;
+      margin: 24px 0 6px;
+    }
+    .pricing-sub-heading:first-child { margin-top: 0; }
+    .pricing-condition { color: var(--text-sub); font-size: 0.85rem; margin-bottom: 8px; }
     .pricing-row {
       display: flex;
       justify-content: space-between;
-      padding: 9px 0;
+      align-items: baseline;
+      flex-wrap: wrap;
+      row-gap: 4px;
+      column-gap: 20px;
+      padding: 11px 0;
       border-bottom: 1px solid var(--border);
       font-size: 0.92rem;
-      max-width: 500px;
+      max-width: 640px;
     }
     .pricing-row:last-child { border-bottom: none; }
+    .pricing-row .plan-name { font-weight: bold; }
+    .pricing-row .plan-detail {
+      display: block;
+      color: var(--text-sub);
+      font-size: 0.8rem;
+      font-weight: normal;
+      margin-top: 3px;
+    }
+    .pricing-row .plan-price { color: var(--green); font-weight: bold; white-space: nowrap; }
+    .pricing-note-inline { color: var(--text-sub); font-size: 0.8rem; margin-top: 10px; }
+    .pricing-small-text { color: var(--text-sub); font-size: 0.82rem; margin-top: 18px; max-width: 700px; }
+    .pricing-theme-list { list-style: none; margin-top: 6px; max-width: 700px; }
+    .pricing-theme-list li { padding: 6px 0; font-size: 0.92rem; font-weight: bold; }
+    .pricing-annotation { font-weight: normal; color: var(--text-sub); font-size: 0.82rem; margin-left: 6px; }
     .pricing-note {
       text-align: center;
       margin-top: 32px;
@@ -177,7 +206,7 @@
       padding: 36px;
     }
     .kindle-cover {
-      width: 130px; min-width: 130px;
+      width: 150px; min-width: 150px;
       border-radius: 4px;
       text-decoration: none;
       overflow: hidden;
@@ -226,6 +255,15 @@
       text-align: center;
       padding: 22px;
       font-size: 0.8rem;
+    }
+
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 1.7rem; }
+      .service-item { padding: 36px 24px; flex-direction: column; gap: 16px; }
+      .pricing-item-head { padding: 24px; }
+      .pricing-item-body { padding: 24px; }
+      .kindle-card { flex-direction: column; padding: 28px; }
+      .kindle-cover { width: 190px; min-width: 0; margin: 0 auto; }
     }
   </style>
 </head>
@@ -280,20 +318,36 @@
     <p class="section-en">SERVICES</p>
   </div>
   <div class="service-item">
-    <h3>出張神経ケア（整体）</h3>
-    <p>お客様のご自宅へ伺い、神経ケアを提供します。移動の手間なく、リラックスした環境で施術を受けていただけます。</p>
+    <img src="images/icon-outreach.png" alt="" class="service-icon">
+    <div class="service-body">
+      <h3>出張神経ケア（整体）</h3>
+      <p>お客様のご自宅へ伺い、神経ケアを提供します。移動の手間なく、リラックスした環境で施術を受けていただけます。</p>
+      <a href="https://hayatancare-eq5dukwo.manus.space" class="btn" target="_blank" rel="noopener">詳しく見る</a>
+    </div>
   </div>
   <div class="service-item">
-    <h3>健康経営サポート</h3>
-    <p>企業・法人様の健康経営に向けてサポートします。従業員の健康維持・増進に向けた取り組みをご提案します。</p>
+    <img src="images/icon-corporate.png" alt="" class="service-icon">
+    <div class="service-body">
+      <h3>健康経営サポート</h3>
+      <p>企業・法人様の健康経営に向けてサポートします。従業員の健康維持・増進に向けた取り組みをご提案します。</p>
+      <a href="https://utage-system.com/p/dyk3rrCuwrLj" class="btn" target="_blank" rel="noopener">詳しく見る</a>
+    </div>
   </div>
   <div class="service-item">
-    <h3>不調・痛み改善サポート</h3>
-    <p>ococナラにて個別の伴走サポートを提供中。身体の不調や痛みの改善に向けて、一人ひとりに寄り添いながらサポートします。</p>
+    <img src="images/icon-support.png" alt="" class="service-icon">
+    <div class="service-body">
+      <h3>不調・痛み改善サポート</h3>
+      <p>ococナラにて個別の伴走サポートを提供中。身体の不調や痛みの改善に向けて、一人ひとりに寄り添いながらサポートします。</p>
+      <a href="https://coconala.com/users/2202705" class="btn" target="_blank" rel="noopener">詳しく見る</a>
+    </div>
   </div>
   <div class="service-item">
-    <h3>講演会</h3>
-    <p>健康・痛みに関する講演会を実施しています。企業・団体へのご訪問も承ります。テーマはご相談ください。</p>
+    <img src="images/icon-seminar.png" alt="" class="service-icon">
+    <div class="service-body">
+      <h3>講演会</h3>
+      <p>健康・痛みに関する講演会を実施しています。企業・団体へのご訪問も承ります。テーマはご相談ください。</p>
+      <a href="https://forms.gle/1KJvBwjLE7dQeA1x8" class="btn" target="_blank" rel="noopener">詳しく見る</a>
+    </div>
   </div>
 </section>
 
@@ -309,8 +363,27 @@
       <p>法人・企業向け</p>
     </div>
     <div class="pricing-item-body">
-      <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
-      <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
+      <p class="pricing-desc">医療施設・介護施設等の社会福祉施設、製造業、デスクワーク、保育園など幅広く対応可能。</p>
+
+      <p class="pricing-sub-heading">健康経営費用目安</p>
+      <p class="pricing-condition">拘束時間1日5時間、1日最大10名神経ケア対応</p>
+      <div class="pricing-row">
+        <span class="plan-name">スタンダードプラン<span class="plan-detail">訪問頻度：月4回（5時間/10名×4回＝最大40名）</span></span>
+        <span class="plan-price">月額 ¥150,000</span>
+      </div>
+      <div class="pricing-row">
+        <span class="plan-name">ライトプラン<span class="plan-detail">訪問頻度：月2回（5時間/10名×2回＝最大20名）</span></span>
+        <span class="plan-price">月額 ¥80,000</span>
+      </div>
+      <div class="pricing-row">
+        <span class="plan-name">スポットプラン<span class="plan-detail">訪問頻度：月1回（5時間/10名×1回＝最大10名）</span></span>
+        <span class="plan-price">月額 ¥45,000</span>
+      </div>
+
+      <p class="pricing-sub-heading">出張費目安</p>
+      <div class="pricing-row"><span class="plan-name">出張加算</span><span class="plan-price">¥20,000</span></div>
+      <div class="pricing-row"><span class="plan-name">旅費実費</span><span class="plan-price">エリアによる</span></div>
+      <p class="pricing-note-inline">※関西圏外で宿泊が必要なエリアは出張費がかかります</p>
     </div>
   </div>
   <div class="pricing-item">
@@ -319,8 +392,35 @@
       <p>企業・団体向け</p>
     </div>
     <div class="pricing-item-body">
-      <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
-      <div class="pricing-row"><span>プラン名（仮）</span><span>¥〇〇,〇〇〇〜</span></div>
+      <p class="pricing-desc">保育園・企業・自治体等での講演会、オンラインセミナー対応可能。</p>
+
+      <div class="pricing-row"><span class="plan-name">保育園・企業・自治体等での講演会</span><span class="plan-price">¥15,000 ＋ 交通費</span></div>
+      <div class="pricing-row"><span class="plan-name">オンラインセミナー</span><span class="plan-price">¥8,000</span></div>
+
+      <p class="pricing-small-text">
+        ご予算に合わせて対応させていただきます。<br>
+        お気軽にご相談ください。<br>
+        交通費は「兵庫県高砂エリア」からの往復料金をご用意いただけますと幸いです。
+      </p>
+      <p class="pricing-small-text">
+        交通費の支払いや講演費の支払い等でご相談も柔軟に乗りますので、まずご相談くださいませ。<br>
+        （今後の依頼状況に応じて講演料は変更の可能性がありますので、興味のある方はお早めにご検討ください）
+      </p>
+      <p class="pricing-small-text">
+        小規模でのお話し会、ママさん向けオンラインセミナー<br>
+        自然食品を使った食事会の開催、マルシェでの整体の提供など講演会や健康の啓蒙活動実施歴あり。
+      </p>
+
+      <p class="pricing-sub-heading">講演テーマ</p>
+      <ul class="pricing-theme-list">
+        <li>痛みが起こる仕組み</li>
+        <li>腰痛の新常識と新時代の腰痛の治し方</li>
+        <li>新時代の腰痛体操</li>
+        <li>自分でできる痛み、コリを和らげるセルフケア指導</li>
+        <li>これからの時代を生き抜く健康論〜体内環境という内側の視点から〜</li>
+        <li>体に優しいウンコの出し方（体の仕組み・食・体操など指導）<span class="pricing-annotation">※お子さんママさん向け</span></li>
+      </ul>
+      <p class="pricing-small-text">他「こんなテーマで話してほしい」などご希望あればお気軽にご相談ください。</p>
     </div>
   </div>
   <p class="pricing-note">※ 出張神経ケア・不調サポートの料金はお問い合わせください。</p>
