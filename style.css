@@ -300,6 +300,13 @@ footer {
   .service-item { padding: 36px 24px; flex-direction: column; gap: 16px; }
   .pricing-item-head { padding: 24px; }
   .pricing-item-body { padding: 24px; }
-  #kindle { --kindle-card-w: 210px; }
+  #kindle { --kindle-card-w: 280px; }
   .kindle-card { padding: 20px; }
+  .kindle-body p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
 }
