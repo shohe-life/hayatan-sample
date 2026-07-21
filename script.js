@@ -6,7 +6,7 @@ new Splide('.kindle-carousel', {
   autoplay: true,
   interval: 4000,
   pauseOnHover: true,
-  arrows: false,
+  arrows: true,
   pagination: true,
   breakpoints: {
     640: { perPage: 1, gap: '16px' },
