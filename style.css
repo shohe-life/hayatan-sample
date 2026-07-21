@@ -162,6 +162,7 @@ section { padding: 88px 40px; }
   margin: 24px 0 6px;
 }
 .pricing-sub-heading:first-child { margin-top: 0; }
+.pricing-theme-heading { font-size: 1.15rem; }
 .pricing-condition { color: var(--text-sub); font-size: 0.85rem; margin-bottom: 8px; }
 .pricing-row {
   display: flex;
@@ -188,7 +189,7 @@ section { padding: 88px 40px; }
 .pricing-note-inline { color: var(--text-sub); font-size: 0.8rem; margin-top: 10px; }
 .pricing-small-text { color: var(--text-sub); font-size: 0.82rem; margin-top: 18px; max-width: 700px; }
 .pricing-theme-list { list-style: none; margin-top: 6px; max-width: 700px; }
-.pricing-theme-list li { padding: 6px 0; font-size: 1.25rem; font-weight: bold; }
+.pricing-theme-list li { padding: 6px 0; font-size: 0.92rem; font-weight: bold; }
 .pricing-annotation { font-weight: normal; color: var(--text-sub); font-size: 0.82rem; margin-left: 6px; }
 .pricing-note {
   text-align: center;
@@ -248,6 +249,15 @@ section { padding: 88px 40px; }
 .kindle-cover img { width: 100%; height: auto; display: block; border-radius: 4px; }
 .kindle-body h3 { font-size: 1.05rem; color: var(--green); margin-bottom: 10px; }
 .kindle-body p { color: var(--text-sub); font-size: 0.85rem; margin-bottom: 18px; line-height: 1.7; }
+.kindle-all-link {
+  display: block;
+  margin-top: 36px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: opacity .2s;
+}
+.kindle-all-link:hover { opacity: .85; }
+.kindle-all-link img { width: 100%; height: auto; display: block; }
 
 /* ── SNS ── */
 #sns { background: #fff; text-align: center; }
