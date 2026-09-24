@@ -1,16 +1,17 @@
 new Splide('.kindle-carousel', {
   type: 'loop',
-  perPage: 3,
+  perPage: 4,
   gap: '24px',
-  focus: 'center',
+  focus: 0, // 4冊並びで中央寄せにすると両端に半分だけの本が出るため
   autoplay: true,
   interval: 4000,
   pauseOnHover: true,
   arrows: true,
   pagination: true,
   breakpoints: {
-    640: { perPage: 1, gap: '16px' },
-    1000: { perPage: 2, gap: '20px' },
+    640: { perPage: 1, gap: '16px', focus: 'center' },
+    1000: { perPage: 2, gap: '20px', focus: 'center' },
+    1280: { perPage: 3, focus: 'center' },
   },
 }).mount();
 

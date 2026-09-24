@@ -46,7 +46,8 @@ nav {
 
 /* ── 共通 ── */
 section { padding: 88px 40px; }
-.inner { max-width: 880px; margin: 0 auto; }
+/* 外枠は1200pxまで広げる。文章の幅は各所で760px前後に抑えて読みやすさを保つ */
+.inner { max-width: 1200px; margin: 0 auto; }
 
 .section-title {
   font-size: 1.75rem;
@@ -125,6 +126,7 @@ section { padding: 88px 40px; }
 }
 .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .about-body h3 { font-size: 1.3rem; color: var(--green); margin-bottom: 14px; }
+.about-body { max-width: 760px; margin: 0 auto; }
 .about-body p { color: var(--text-sub); margin-bottom: 10px; font-size: 0.95rem; }
 
 /* ── サービス ── */
@@ -132,7 +134,7 @@ section { padding: 88px 40px; }
 .services-header { padding: 0 40px; }
 .service-item {
   background: #fff;
-  max-width: 880px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 48px 80px;
   border-top: 1px solid var(--border);
@@ -149,7 +151,7 @@ section { padding: 88px 40px; }
 /* ── 料金 ── */
 #pricing { background: #fff; padding: 88px 0; }
 .pricing-header { padding: 0 40px; }
-.pricing-item { max-width: 880px; margin: 0 auto; border-top: 1px solid var(--border); }
+.pricing-item { max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); }
 .pricing-item:first-of-type { border-top: 4px solid var(--green-mid); }
 .pricing-item-head { background: var(--green); color: #fff; padding: 24px 80px; }
 .pricing-item-head h3 { font-size: 1.1rem; margin-bottom: 2px; }
@@ -175,7 +177,6 @@ section { padding: 88px 40px; }
   padding: 11px 0;
   border-bottom: 1px solid var(--border);
   font-size: 0.92rem;
-  max-width: 640px;
 }
 .pricing-row:last-child { border-bottom: none; }
 .pricing-row .plan-name { font-weight: bold; }
@@ -372,6 +373,8 @@ footer {
   margin-bottom: 36px;
   text-align: left;
 }
+/* display:grid が hidden 属性に勝ってしまうので明示的に消す */
+.blog-list[hidden] { display: none; }
 .blog-list li { display: flex; }
 .blog-card {
   display: flex;
@@ -398,17 +401,30 @@ footer {
   .blog-skeleton:not(:first-child) { display: none; }
 }
 
-/* こんな方ははやたんにお任せください（料金欄のお悩みカード） */
-.worry-heading { font-size: 1.15rem; font-weight: bold; text-align: center; margin: 8px 0 18px; }
+/* こんな方ははやたんにお任せください（料金欄のお悩みカード）
+   料金欄の本文幅（約720px）だと3枚が窮屈なので、カードの列だけ本文より広く取る */
+.worry-heading { font-size: 1.3rem; font-weight: bold; text-align: center; margin: 8px 0 20px; }
 .worry-cards {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 24px;
+  width: min(1200px, calc(100vw - 32px));
+  margin: 0 0 40px calc(50% - min(600px, 50vw - 16px));
 }
-.worry-cards li { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
-.worry-cards img { display: block; width: 100%; height: auto; }
-@media (max-width: 768px) {
+.worry-cards li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 180px;
+  padding: 20px 18px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,.12);
+}
+.worry-cards img { flex: 0 0 auto; width: 96px; height: 96px; object-fit: contain; }
+.worry-cards p { font-weight: bold; font-size: 1.05rem; line-height: 1.7; color: var(--text); word-break: auto-phrase; }
+@media (max-width: 900px) {
   .worry-cards { grid-template-columns: 1fr; gap: 12px; }
+  .worry-cards li { min-height: 0; padding: 16px; }
+  .worry-cards img { width: 72px; height: 72px; }
 }
