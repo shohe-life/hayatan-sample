@@ -31,6 +31,7 @@ nav {
   z-index: 100;
 }
 .nav-logo { font-size: 1.2rem; font-weight: bold; color: var(--green); flex-shrink: 0; }
+.nav-logo a { color: inherit; text-decoration: none; }
 .nav-links {
   display: flex;
   gap: 28px;
@@ -299,6 +300,52 @@ footer {
   padding: 22px;
   font-size: 0.8rem;
 }
+.footer-links { margin-bottom: 8px; }
+.footer-links a {
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  padding-bottom: 2px;
+}
+.footer-links a:hover { color: #fff; border-bottom-color: #fff; }
+
+/* ── 規約ページ（プライバシーポリシー等） ── */
+.legal {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+}
+.legal .legal-lead {
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  margin-bottom: 40px;
+}
+.legal h1 {
+  font-size: 1.6rem;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.legal h2 {
+  font-size: 1.1rem;
+  margin: 36px 0 12px;
+  padding-left: 12px;
+  border-left: 4px solid var(--green-mid);
+}
+.legal p { margin-bottom: 14px; }
+.legal p a { color: var(--green); }
+.legal .legal-back {
+  display: inline-block;
+  margin-top: 48px;
+  color: var(--green);
+  font-weight: bold;
+  text-decoration: none;
+}
+.legal .legal-back:hover { text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .legal { padding: 100px 20px 60px; }
+  .legal h1 { font-size: 1.35rem; }
+}
 
 @media (max-width: 700px) {
   nav { padding: 0 20px; gap: 16px; }
@@ -312,4 +359,56 @@ footer {
   .pricing-item-body { padding: 24px; }
   #kindle { --kindle-card-w: 280px; }
   .kindle-card { padding: 20px; }
+}
+
+/* ── ブログ ── */
+#blog { background: #fff; text-align: center; }
+.blog-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 36px;
+  text-align: left;
+}
+.blog-list li { display: flex; }
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: box-shadow .2s, transform .2s;
+}
+.blog-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,.08); transform: translateY(-2px); }
+.blog-card { border-top: 4px solid var(--green-mid); }
+.blog-body { padding: 22px 22px 24px; }
+.blog-body time { font-size: 0.78rem; color: var(--text-sub); }
+.blog-body h3 { font-size: 0.98rem; color: var(--green); margin: 6px 0 10px; line-height: 1.5; }
+.blog-body p { font-size: 0.85rem; color: var(--text-sub); line-height: 1.7; }
+.blog-skeleton { height: 200px; border-radius: 8px; background: var(--green-pale); }
+
+@media (max-width: 800px) {
+  .blog-list { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .blog-skeleton:not(:first-child) { display: none; }
+}
+
+/* こんな方ははやたんにお任せください（料金欄のお悩みカード） */
+.worry-heading { font-size: 1.15rem; font-weight: bold; text-align: center; margin: 8px 0 18px; }
+.worry-cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.worry-cards li { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+.worry-cards img { display: block; width: 100%; height: auto; }
+@media (max-width: 768px) {
+  .worry-cards { grid-template-columns: 1fr; gap: 12px; }
 }
